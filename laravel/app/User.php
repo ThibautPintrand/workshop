@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -26,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function module(){
+        return $this->hasMany('App\\Module');
+    }
+
+    public function message(){
+        return $this->hasMany('App\\Message');
+    }
+    public function participe(){
+        return $this->hasMany('App\\Participe');
+    }
 }
